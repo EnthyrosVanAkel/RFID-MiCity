@@ -1,12 +1,17 @@
+ #!/usr/bin/env python
+import time
 import serial
-serial = serial.Serial("/dev/ttyAMA0", baudrate=9600)
 
-code = ''
+ser = serial.Serial(port='/dev/ttyUSB0',
+               baudrate = 9600,
+               parity=serial.PARITY_NONE,
+               stopbits=serial.STOPBITS_ONE,
+               bytesize=serial.EIGHTBITS,
+               timeout=1
+           )
 
-while True:
-    data = serial.read()
-    if data == '\r':
-        print(code)
-        code = ''
-    else:
-        code = code + data
+counter=0
+
+while 1:
+	x=ser.readline()
+	print x
