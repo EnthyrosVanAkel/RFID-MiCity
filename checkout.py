@@ -20,7 +20,7 @@ def send_message(message):
 
 if __name__ == '__main__':
     buffer = ''
-    ser = serial.Serial('/dev/ttyUSB0', BITRATE, timeout=0)
+    ser = serial.Serial('/dev/ttyUSB0', BITRATE, timeout=1)
 
     while True:
       # Read data from RFID reader
@@ -29,3 +29,5 @@ if __name__ == '__main__':
         lines = buffer.split('\n')
         print lines
         send_message(lines)
+        buffer = ''
+        lines = ''
