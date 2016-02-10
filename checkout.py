@@ -24,8 +24,5 @@ if __name__ == '__main__':
 
     while True:
       # Read data from RFID reader
-      buffer = buffer + ser.readline(ser.inWaiting())
-      if '\n' in buffer:
-        lines = buffer.split('\n')
-        print lines
-        send_message(lines  )
+      x=ser.readline()
+      print x
