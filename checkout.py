@@ -11,7 +11,7 @@ BITRATE = 9600
 def send_message(message):
 	cliente = OSC.OSCClient()
 	cliente.connect((URL,PORT))
-	oscmsg = OSCMessage()
+	oscmsg = OSC.OSCMessage()
 	oscmsg.setAddress("/checkout")
 	oscmsg.append(message)
 	cliente.send(oscmsg)
