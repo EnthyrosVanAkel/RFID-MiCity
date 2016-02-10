@@ -28,4 +28,4 @@ if __name__ == '__main__':
       if '\n' in buffer:
         lines = buffer.split('\n')
         print lines
-        send_message(lines)
+        send_message(lines  )

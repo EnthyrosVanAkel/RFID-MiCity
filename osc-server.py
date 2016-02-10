@@ -1,7 +1,7 @@
 import OSC
 
 def handler(addr, tags, data, client_address):
-    txt = "OSCMessage '%s' from %s: " % (addr, client_address)
+    txt = "Mensaje OSC '%s' DE %s: " % (addr, client_address)
     txt += str(data)
     print(txt)
 
