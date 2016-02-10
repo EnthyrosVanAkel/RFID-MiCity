@@ -11,7 +11,7 @@ BITRATE = 9600
 def send_message(message):
 	cliente = OSC.OSCClient()
 	cliente.connect((URL,PORT))
-	oscmsg = OSC.ºOSCMessage()
+	oscmsg = OSC.OSCMessage()
 	oscmsg.setAddress("/checkout")
 	oscmsg.append(message)
 	cliente.send(oscmsg)
@@ -26,3 +26,4 @@ if __name__ == '__main__':
       # Read data from RFID reader
       x=ser.readline()
       print x
+      send_message(x)
