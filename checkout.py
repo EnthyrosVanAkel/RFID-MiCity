@@ -22,6 +22,8 @@ if __name__ == '__main__':
     buffer = ''
     ser = serial.Serial('/dev/ttyUSB0', BITRATE, timeout=0)
 rfidPattern = re.compile(b'[\W_]+')
+visitante = 12
+eleccion = 10
 while True:
       # Read data from RFID reader
       buffer = buffer + ser.read(ser.inWaiting())
@@ -29,7 +31,8 @@ while True:
         lines = buffer.split('\n')
         last_received = lines[-2]
         match = rfidPattern.sub('', last_received)
-        print lines
-        send_message(buffer)
+	mensaje = '[pulsera:'+match+',id_visitante:'+str(visitante)+',eleccion_id:'+str(eleccion)+']'
+        print mensaje
+        send_message(mensaje)
         buffer = ''
         lines = ''
