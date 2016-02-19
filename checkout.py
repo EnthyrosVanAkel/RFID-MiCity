@@ -1,14 +1,23 @@
 import re, sys, signal, os, time, datetime
 import serial
 import OSC
+import RPi.GPIO as GPIO
 
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(11,GPIO.OUT)
 
 URL = '127.0.0.1'
 PORT = 5720
 BITRATE = 9600
 
 
+def encender():
+	GPIO.output(11,True)
+	time.sleep(1)
+	GPIO.output(11,False)
+
 def send_message(message):
+	encender()
 	cliente = OSC.OSCClient()
 	cliente.connect((URL,PORT))
 	oscmsg = OSC.OSCMessage()
