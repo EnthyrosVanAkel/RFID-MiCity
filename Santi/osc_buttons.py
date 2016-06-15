@@ -168,7 +168,6 @@ def main(argv):
     filepath = 'config.json'
     if len(argv) > 1:
         filepath = argv[1]
-
     load_config(filepath)
 
 

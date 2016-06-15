@@ -43,4 +43,4 @@ if __name__ == '__main__':
         buffer = ''
         lines = ''
 
-        pygame.display.update()
+    pygame.display.update()
