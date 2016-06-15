@@ -1,0 +1,28 @@
+{
+  "osc_config": {
+    "address": "10.1.7.42",
+    "port": 7890
+  },
+  "buttons": [
+    {
+      "label": "Aprobado",
+      "font_size": 45,
+      "position": [20, 20],
+      "size": [280, 90],
+      "colors": {
+        "normal": [64, 255, 32],
+        "pressed": [64, 64, 64]
+      }
+    },
+    {
+      "label": "Denegador",
+      "font_size": 45,
+      "position": [20, 130],
+      "size": [280, 90],
+      "colors": {
+        "normal": [255, 64, 32],
+        "pressed": [64, 64, 64]
+      }
+  }
+]
+}
