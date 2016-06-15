@@ -84,7 +84,7 @@ def make_button(text, font_size, position, size, colors, on_press, on_release):
         'on_release': on_release
     }
     buttons.append(button)
-    draw_button(button, True)
+    draw_button(button, False)
 
 
 def draw_button(desc, pressed):
@@ -136,10 +136,10 @@ if __name__ == "__main__":
         json = r.json()
         edad = json.get('edad')
         if (edad < '18'):
-            draw_button(buttons[1], False)
+            draw_button(buttons[1], True)
             print 'No permitido'
         else:
-            draw_button(buttons[0], False)
+            draw_button(buttons[0], True)
             print 'Permitido'
             
         buffer = ''
