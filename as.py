@@ -101,29 +101,6 @@ def draw_button(desc, pressed):
     screen.blit(label, (label_x, label_y))
 
 
-def on_mousedown():
-    global pressed_button
-    click_pos = (pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
-    for button in buttons:
-        rect = button['rect']
-        if (rect[0] <= click_pos[0] <= rect[0] + rect[2]
-                and rect[1] <= click_pos[1] <= rect[1] + rect[3]):
-            pressed_button = button
-            press_callbacks = button['on_press']
-            for callback in press_callbacks:
-                callback()
-            draw_button(button, True)
-
-
-def on_mouseup():
-    global pressed_button
-    if pressed_button is not None:
-        draw_button(pressed_button, False)
-        release_callbacks = pressed_button['on_release']
-        for callback in release_callbacks:
-            callback()
-        pressed_button = None
-
 
 def main(argv):
     filepath = 'config.json'
@@ -138,14 +115,4 @@ if __name__ == "__main__":
 
 
 while 1:
-    for event in pygame.event.get():
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            on_mousedown()
-
-        if event.type == pygame.MOUSEBUTTONUP:
-            on_mouseup()
-
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-                sys.exit()
     pygame.display.update()
