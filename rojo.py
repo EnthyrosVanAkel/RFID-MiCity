@@ -33,6 +33,11 @@ if __name__ == '__main__':
         data = {'rfid':decimal,'zona':1,'experiencia':1}
         r = requests.get(URL,params = data)
         json = r.json()
-	print json.get('edad') 
+        edad = json.get('edad')
+        if (edad < 18:
+            print 'No permido'
+        else:
+            print 'Permitido'
+            
         buffer = ''
         lines = ''
