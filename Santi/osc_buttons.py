@@ -118,7 +118,7 @@ def make_button(text, font_size, position, size, colors, on_press, on_release):
         'on_release': on_release
     }
     buttons.append(button)
-    #draw_button(button, False)
+    draw_button(button, False)
 
 
 def draw_button(desc, pressed):
@@ -168,6 +168,7 @@ def main(argv):
     filepath = 'config.json'
     if len(argv) > 1:
         filepath = argv[1]
+
     load_config(filepath)
 
 
