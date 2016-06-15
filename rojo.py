@@ -16,7 +16,7 @@ SCR_SIZE = 320, 240
 WHITE = (255, 255, 255)
 
 pygame.init()
-pygame.mouse.set_visible(False)
+#pygame.mouse.set_visible(False)
 screen = pygame.display.set_mode(SCR_SIZE)
 
 
