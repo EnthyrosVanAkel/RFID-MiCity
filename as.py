@@ -2,6 +2,8 @@ import sys
 import pygame
 import os
 import json
+import serial
+import requests
 
 os.environ["SDL_FBDEV"] = "/dev/fb1"
 os.environ["SDL_MOUSEDEV"] = "/dev/input/touchscreen"
