@@ -117,35 +117,8 @@ def main(argv):
 
 if __name__ == "__main__":
     main(sys.argv)
-
-    buffer = ''
-    ser = serial.Serial('/dev/ttyUSB0', BITRATE, timeout=1)
-    rfidPattern = re.compile(b'[\W_]+')
-
-
+ 
 while 1:
-    # Read data from RFID reader
-      buffer = buffer + ser.read(ser.inWaiting())
-      if '\n' in buffer:
-        lines = buffer.split('\n')
-        last_received = lines[-2]
-        match = rfidPattern.sub('', last_received)
-        hexa = match[4:10]
-        decimal = int(hexa,16)
-        print decimal
-        data = {'rfid':decimal,'zona':1,'experiencia':1}
-        r = requests.get(URL,params = data)
-        json = r.json()
-        edad = json.get('edad')
-        if (edad < '18'):
-            print 'No permitido'
-        else:
-            print 'Permitido'
-            
-        buffer = ''
-        lines = ''
-        
-
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
