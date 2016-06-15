@@ -2,9 +2,15 @@ import re, sys, signal, os, time, datetime
 import serial
 ### Instalar Requets
 import requests
+import json
+import pygame
 
 
+os.environ["SDL_FBDEV"] = "/dev/fb1"
+os.environ["SDL_MOUSEDEV"] = "/dev/input/touchscreen"
+os.environ["SDL_MOUSEDRV"] = "TSLIB"
 BITRATE = 9600
+URL = 'http://papalote.cocoplan.mx/v0/visitante'
 
 
 
@@ -24,5 +30,8 @@ if __name__ == '__main__':
         hexa = match[4:10]
         decimal = int(hexa,16)
         print decimal
+        data = {'rfid':decimal,'zona':1,'experiencia':1}
+        r = requests.get(URL,data);
+        print r 
         buffer = ''
         lines = ''
