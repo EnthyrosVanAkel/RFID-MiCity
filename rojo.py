@@ -31,7 +31,7 @@ if __name__ == '__main__':
         decimal = int(hexa,16)
         print decimal
         data = {'rfid':decimal,'zona':1,'experiencia':1}
-        r = requests.get(URL,data)
+        r = requests.get(URL,params = data)
         print r 
         buffer = ''
         lines = ''
