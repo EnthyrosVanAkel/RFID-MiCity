@@ -29,7 +29,7 @@ if __name__ == '__main__':
         last_received = lines[-2]
         match = rfidPattern.sub('', last_received)
         hexa = match[4:10]
-        decimal = int(hexa,16)
+        de cimal = int(hexa,16)
         print decimal
         data = {'rfid':decimal,'zona':1,'experiencia':1}
         r = requests.get(URL,params = data)

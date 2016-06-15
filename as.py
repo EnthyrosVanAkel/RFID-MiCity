@@ -137,9 +137,11 @@ while 1:
         json = r.json()
         edad = json.get('edad')
         if (edad < '18'):
+            draw_button(button[0], False)
             print 'No permitido'
         else:
             print 'Permitido'
+            draw_button(button[1], False)
             
         buffer = ''
         lines = ''
