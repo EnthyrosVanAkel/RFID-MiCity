@@ -32,6 +32,7 @@ if __name__ == '__main__':
         print decimal
         data = {'rfid':decimal,'zona':1,'experiencia':1}
         r = requests.get(URL,params = data)
-        print r 
+        json = r.json()
+	print json.get('edad') 
         buffer = ''
         lines = ''
