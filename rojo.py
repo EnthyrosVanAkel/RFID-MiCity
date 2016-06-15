@@ -31,20 +31,20 @@ if __name__ == '__main__':
         if '\n' in buffer:
             lines = buffer.split('\n')
             last_received = lines[-2]
-            match = rfidPattern.sub('', last_received)
-            hexa = match[4:10]
-            decimal = int(hexa,16)
-            print decimal
-            data = {'rfid':decimal,'zona':1,'experiencia':1}
-            r = requests.get(URL,params = data)
-            json = r.json()
-            edad = json.get('edad')
-            if (edad < '18'):
-                print 'No permitido'
-            else:
-                print 'Permitido'
+        match = rfidPattern.sub('', last_received)
+        hexa = match[4:10]
+        decimal = int(hexa,16)
+        print decimal
+        data = {'rfid':decimal,'zona':1,'experiencia':1}
+        r = requests.get(URL,params = data)
+        json = r.json()
+        edad = json.get('edad')
+        if (edad < '18'):
+            print 'No permitido'
+        else:
+            print 'Permitido'
             
-            buffer = ''
-            lines = ''
+        buffer = ''
+        lines = ''
 
         pygame.display.update()
