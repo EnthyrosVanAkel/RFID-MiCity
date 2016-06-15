@@ -9,8 +9,15 @@ import pygame
 os.environ["SDL_FBDEV"] = "/dev/fb1"
 os.environ["SDL_MOUSEDEV"] = "/dev/input/touchscreen"
 os.environ["SDL_MOUSEDRV"] = "TSLIB"
+
 BITRATE = 9600
 URL = 'http://papalote.cocoplan.mx/v0/visitante'
+SCR_SIZE = 320, 240
+WHITE = (255, 255, 255)
+
+pygame.init()
+pygame.mouse.set_visible(False)
+screen = pygame.display.set_mode(SCR_SIZE)
 
 
 
