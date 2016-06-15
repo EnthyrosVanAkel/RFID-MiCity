@@ -7,6 +7,9 @@ os.environ["SDL_FBDEV"] = "/dev/fb1"
 os.environ["SDL_MOUSEDEV"] = "/dev/input/touchscreen"
 os.environ["SDL_MOUSEDRV"] = "TSLIB"
 
+
+BITRATE = 9600
+URL = 'http://papalote.cocoplan.mx/v0/visitante'
 SCR_SIZE = 320, 240
 BUTTON_PADDING = 10
 WHITE = (255, 255, 255)
@@ -79,7 +82,7 @@ def make_button(text, font_size, position, size, colors, on_press, on_release):
         'on_release': on_release
     }
     buttons.append(button)
-    draw_button(button, False)
+    draw_button(button, True)
 
 
 def draw_button(desc, pressed):
@@ -112,7 +115,34 @@ def main(argv):
 
 if __name__ == "__main__":
     main(sys.argv)
+    buffer = ''
+    ser = serial.Serial('/dev/ttyUSB0', BITRATE, timeout=1)
+    rfidPattern = re.compile(b'[\W_]+')
+    while True:
+      # Read data from RFID reader
+      buffer = buffer + ser.read(ser.inWaiting())
+      if '\n' in buffer:
+        lines = buffer.split('\n')
+        last_received = lines[-2]
+        match = rfidPattern.sub('', last_received)
+        hexa = match[4:10]
+        decimal = int(hexa,16)
+        print decimal
+        data = {'rfid':decimal,'zona':1,'experiencia':1}
+        r = requests.get(URL,params = data)
+        json = r.json()
+        edad = json.get('edad')
+        if (edad < '18'):
+            draw_button(buttons[1], False)
+            print 'No permitido'
+        else:
+            draw_button(buttons[0], False)
+            print 'Permitido'
+            
+        buffer = ''
+        lines = ''
+
+        pygame.display.update()
 
 
-while 1:
-    pygame.display.update()
+
