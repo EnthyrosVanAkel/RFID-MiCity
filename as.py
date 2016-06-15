@@ -117,6 +117,7 @@ def main(argv):
 
 if __name__ == "__main__":
     main(sys.argv)
+
     buffer = ''
     ser = serial.Serial('/dev/ttyUSB0', BITRATE, timeout=1)
     rfidPattern = re.compile(b'[\W_]+')
@@ -144,7 +145,13 @@ if __name__ == "__main__":
         buffer = ''
         lines = ''
 
-        pygame.display.update()
+
+while 1:
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                sys.exit()
+    pygame.display.update()
 
 
 
