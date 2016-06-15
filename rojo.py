@@ -34,8 +34,8 @@ if __name__ == '__main__':
         r = requests.get(URL,params = data)
         json = r.json()
         edad = json.get('edad')
-        if (edad < 18:
-            print 'No permido'
+        if (edad < '18'):
+            print 'No permitido'
         else:
             print 'Permitido'
             
