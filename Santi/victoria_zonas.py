@@ -10,7 +10,7 @@ GPIO.setup(10,GPIO.OUT)
 URL = 'http://10.1.8.170:9000/api/visitors/'
 BITRATE = 9600
 LED = False
-ZONA = 'Comida'
+ZONA = 'Coma'
 
 
 def encender():
@@ -43,4 +43,4 @@ if __name__ == '__main__':
             line = ser.readline()
             rfid = line.strip()
             print rfid
-            mandar_zona(str(rfid),ZONA)
+            mandar_zona(rfid,ZONA)
