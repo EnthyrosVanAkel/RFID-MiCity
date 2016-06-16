@@ -30,30 +30,30 @@ if __name__ == '__main__':
     ser = serial.Serial('/dev/ttyUSB0', BITRATE)
     rfidPattern = re.compile(b'[\W_]+')
 
-try:
-    ser.flushInput()
-    ser.flushOutput()
-except Exception, e:
-    print "error open serial port: " + str(e)
-    exit()
+    try:
+        ser.flushInput()
+        ser.flushOutput()
+    except Exception, e:
+        print "error open serial port: " + str(e)
+        exit()
 
-if ser.isOpen():
-    while True:
-        line = ser.readline()
-        rfid = line.strip()
-        print rfid
-        data = {'rfid':rfid,'zona':1,'experiencia':1}
-        r = requests.get(URL,params = data)
-        json = r.json()
-        edad = json.get('edad')
-        if (edad < '18'):
-          pygame.draw.rect(screen,GREEN,RECT_GREE)
-          print 'No permitido'
-        else:
-          pygame.draw.rect(screen,GREEN,RECT_GREEN)
-          print 'Permitido'
+    if ser.isOpen():
+        while True:
+            line = ser.readline()
+            rfid = line.strip()
+            print rfid
+            data = {'rfid':rfid,'zona':1,'experiencia':1}
+            r = requests.get(URL,params = data)
+            json = r.json()
+            edad = json.get('edad')
+            if (edad < '18'):
+              pygame.draw.rect(screen,GREEN,RECT_GREE)
+              print 'No permitido'
+            else:
+              pygame.draw.rect(screen,GREEN,RECT_GREEN)
+              print 'Permitido'
 
 
-        screen.fill(BLACK)
+            screen.fill(BLACK)
 
-        pygame.display.update()
+            pygame.display.update()
