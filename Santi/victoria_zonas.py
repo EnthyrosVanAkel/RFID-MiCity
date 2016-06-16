@@ -3,14 +3,38 @@ import serial
 ### Instalar Requets
 import requests
 import RPi.GPIO as GPIO
+import json
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(10,GPIO.OUT)
 
-URL = 'http://10.1.8.170:9000/api/visitors/'
 BITRATE = 9600
-LED = False
-ZONA = 'Prsueba1'
+
+
+DEFAULT_CONFIG = {
+    "address": "http://10.1.8.170:9000/api/visitors/",
+    "led": False,
+    "zona": "Zona1"
+  }
+
+
+def load_config(filepath):
+    print 'Loading config...'
+    try:
+        with open(filepath) as config_file:
+            try:
+                config_data = json.load(config_file)
+            except ValueError as e:
+                print '[FATAL] Error parsing config file: ' + str(e)
+                sys.exit(-1)
+    except IOError as e:
+        print '[FATAL] Error loading config file: ' + str(e)
+
+    config = config_data.get('config', DEFAULT_CONFIG)
+
+    global url = config.get('address')
+    global led = config.get('led')
+    global zona = config.get('zona')
 
 
 def encender():
@@ -18,10 +42,14 @@ def encender():
     time.sleep(1)
     GPIO.output(11,False)
 
-def mandar_zona(rfid,zona):
-    if LED:
+def mandar_zona(rfid):
+    global led
+    global url
+    global zona
+
+    if led:
         encender()
-    consulta = URL + rfid + '/' + zona
+    consulta = url + rfid + '/' + zona
     print consulta
     r = requests.get(consulta)
     print r
@@ -45,4 +73,4 @@ if __name__ == '__main__':
             #print rfid
             match = rfidPattern.sub('', last_received)
 	    print match
-            mandar_zona(match,ZONA)
+            mandar_zona(match)
