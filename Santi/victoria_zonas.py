@@ -21,10 +21,11 @@ def encender():
 def mandar_zona(rfid,zona):
     if LED:
         encender()
-    consulta = URL + rfid +'/' + zona
+    consulta = URL + rfid + '/' + zona
     print consulta
     r = requests.get(consulta)
-    print r.toJson()
+    print r
+    print r.json()
 
 
 if __name__ == '__main__':
@@ -42,4 +43,4 @@ if __name__ == '__main__':
             line = ser.readline()
             rfid = line.strip()
             print rfid
-            mandar_zona(rfid,ZONA)
+            mandar_zona(str(rfid),ZONA)
