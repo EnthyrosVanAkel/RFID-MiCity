@@ -22,5 +22,16 @@ if __name__ == '__main__':
         last_received = lines[-2]
         match = rfidPattern.sub('', last_received)
         print match
+        data = {'rfid':match,'zona':1,'experiencia':1}
+        r = requests.get(URL,params = data)
+        json = r.json()
+        edad = json.get('edad')
+        if (edad < '18'):
+          pygame.draw.rect(screen,RED,RECT_RED)
+          print 'No permitido'
+        else:
+          pygame.draw.rect(screen,GREEN,RECT_GREEN)
+          print 'Permitido'
+      
         buffer = ''
         lines = ''
