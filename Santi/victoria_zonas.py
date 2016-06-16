@@ -7,10 +7,15 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(11,GPIO.OUT)
 
-URL = 'http://papalote.cocoplan.mx/v0/agregar_puntos'
+URL = '10.1.8.170:9000/api/visitors/'
 BITRATE = 9600
+<<<<<<< HEAD
 LED = True
 ZONA = 10
+=======
+LED = False
+ZONA = 'Comida'
+>>>>>>> 5c52870b5027c333c2d58485b3d73a4090832bc1
 
 def encender():
     GPIO.output(11,True)
@@ -20,8 +25,8 @@ def encender():
 def mandar_zona(rfid,zona):
     if LED:
         encender()
-    data = {'rfid':rfid,'zona':1,'experiencia':1,'puntos':zona}
-    r = requests.post(URL,data)
+    consulta = URL + rfid +'/' zona
+    r = requests.get(consulta)
     print r
 
 
