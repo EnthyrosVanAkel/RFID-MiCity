@@ -7,7 +7,7 @@ import requests
 BITRATE = 9600
 
 
-
+URL = 'http://papalote.cocoplan.mx/v0/visitante'
 
 if __name__ == '__main__':
     buffer = ''
@@ -27,10 +27,10 @@ if __name__ == '__main__':
         json = r.json()
         edad = json.get('edad')
         if (edad < '18'):
-          pygame.draw.rect(screen,RED,RECT_RED)
+          #pygame.draw.rect(screen,RED,RECT_RED)
           print 'No permitido'
         else:
-          pygame.draw.rect(screen,GREEN,RECT_GREEN)
+          #pygame.draw.rect(screen,GREEN,RECT_GREEN)
           print 'Permitido'
       
         buffer = ''
