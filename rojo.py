@@ -31,7 +31,7 @@ if __name__ == '__main__':
         if '\n' in buffer:
             lines = buffer.split('\n')
             last_received = lines[-2]
-        match = rfidPattern.sub('', last_received)
+            match = rfidPattern.sub('', last_received)
         hexa = match[4:10]
         decimal = int(hexa,16)
         print decimal
