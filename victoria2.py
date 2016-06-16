@@ -37,7 +37,10 @@ if __name__ == '__main__':
       last_received = lines[-2]
       match = rfidPattern.sub('', last_received)
       print match
-      data = {'rfid':match,'zona':1,'experiencia':1}
+      hexa = match[4:10]
+      decimal = int(hexa,16)
+      print decimal
+      data = {'rfid':decimal,'zona':1,'experiencia':1}
       r = requests.get(URL,params = data)
       json = r.json()
       edad = json.get('edad')
