@@ -9,7 +9,7 @@ GPIO.setup(11,GPIO.OUT)
 
 URL = 'http://papalote.cocoplan.mx/v0/agregar_puntos'
 BITRATE = 9600
-LED = False
+LED = True
 ZONA = 10
 
 def encender():

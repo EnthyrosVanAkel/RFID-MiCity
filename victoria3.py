@@ -5,9 +5,9 @@ import requests
 import pygame
 
 
-#os.environ["SDL_FBDEV"] = "/dev/fb1"
-#os.environ["SDL_MOUSEDEV"] = "/dev/input/touchscreen"
-#os.environ["SDL_MOUSEDRV"] = "TSLIB"
+os.environ["SDL_FBDEV"] = "/dev/fb1"
+os.environ["SDL_MOUSEDEV"] = "/dev/input/touchscreen"
+os.environ["SDL_MOUSEDRV"] = "TSLIB"
 
 BITRATE = 9600
 URL = 'http://papalote.cocoplan.mx/v0/visitante'
