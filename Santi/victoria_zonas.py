@@ -41,6 +41,7 @@ if __name__ == '__main__':
     if ser.isOpen():
         while True:
             line = ser.readline()
-            rfid = line.strip()
+            last_received = line.strip()
             print rfid
-            mandar_zona(rfid,ZONA)
+            match = rfidPattern.sub('', last_received)
+            #mandar_zona(rfid,ZONA)
