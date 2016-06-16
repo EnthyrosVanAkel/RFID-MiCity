@@ -17,7 +17,7 @@ BLACK = (0,0,0)
 RED = (255,0,0)
 GREEN = (0,255,0)
 RECT_RED = [20, 20, 250, 100]
-RECT_GREEN = [20, 140, 250, 100]
+RECT_GREEN = [20, 140, 200, 100]
 
 pygame.init()
 pygame.mouse.set_visible(False)
@@ -47,7 +47,7 @@ if __name__ == '__main__':
             json = r.json()
             edad = json.get('edad')
             if (edad < '18'):
-              pygame.draw.rect(screen,GREEN,RECT_GREEN)
+              pygame.draw.rect(screen,GREEN,RECT_GREE)
               print 'No permitido'
             else:
               pygame.draw.rect(screen,GREEN,RECT_GREEN)
