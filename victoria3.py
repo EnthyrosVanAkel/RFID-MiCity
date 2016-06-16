@@ -17,7 +17,7 @@ BLACK = (0,0,0)
 RED = (255,0,0)
 GREEN = (0,255,0)
 RECT_RED = [20, 20, 250, 100]
-RECT_GREEN = [20, 20, 250, 100]
+RECT_GREEN = [20, 140, 250, 100]
 
 pygame.init()
 pygame.mouse.set_visible(False)
@@ -52,5 +52,8 @@ if __name__ == '__main__':
             else:
               pygame.draw.rect(screen,GREEN,RECT_GREEN)
               print 'Permitido'
+
+
+            screen.fill(BLACK)
 
             pygame.display.update()
