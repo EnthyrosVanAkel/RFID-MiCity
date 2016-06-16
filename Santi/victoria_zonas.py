@@ -19,6 +19,12 @@ DEFAULT_CONFIG = {
 
 
 def load_config(filepath):
+
+    global led
+    global url
+    global zona
+
+
     print 'Loading config...'
     try:
         with open(filepath) as config_file:
@@ -32,9 +38,9 @@ def load_config(filepath):
 
     config = config_data.get('config', DEFAULT_CONFIG)
 
-    global url = config.get('address')
-    global led = config.get('led')
-    global zona = config.get('zona')
+    url = config.get('address')
+    led = config.get('led')
+    zona = config.get('zona')
 
 
 def encender():
