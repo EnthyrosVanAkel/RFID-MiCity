@@ -23,7 +23,7 @@ if __name__ == '__main__':
     except Exception, e:
         print "error open serial port: " + str(e)
         exit()
-​
+
     if ser.isOpen():
         while True:
             line = ser.readline()
