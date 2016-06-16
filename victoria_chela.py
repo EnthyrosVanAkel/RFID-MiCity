@@ -29,7 +29,7 @@ pygame.mouse.set_visible(False)
 screen = pygame.display.set_mode(SCR_SIZE)
 
 def load_config(filepath):
-    
+
     global url
     global zona
 
@@ -80,3 +80,6 @@ if __name__ == "__main__":
             #print rfid
             match = rfidPattern.sub('', last_received)
 	    print match
+
+
+        pygame.display.update()
