@@ -47,7 +47,7 @@ if __name__ == '__main__':
             json = r.json()
             edad = json.get('edad')
             if (edad < '18'):
-              pygame.draw.rect(screen,RED,RECT_RED)
+              pygame.draw.rect(screen,GREEN,RECT_GREEN)
               print 'No permitido'
             else:
               pygame.draw.rect(screen,GREEN,RECT_GREEN)
