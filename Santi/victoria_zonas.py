@@ -62,7 +62,19 @@ def mandar_zona(rfid):
     print r.json()
 
 
-if __name__ == '__main__':
+
+
+def main(argv):
+    filepath = 'config.json'
+    if len(argv) > 1:
+        filepath = argv[1]
+
+    load_config(filepath)
+
+
+if __name__ == "__main__":
+    main(sys.argv)
+    
     ser = serial.Serial('/dev/ttyUSB0', BITRATE)
     rfidPattern = re.compile(b'[\W_]+')
     try:
