@@ -2,11 +2,16 @@ import re, sys, signal, os, time, datetime
 import serial
 ### Instalar Requets
 import requests
-import RPi.GPIO as GPIO
+import pygame
 import json
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(10,GPIO.OUT)
+os.environ["SDL_FBDEV"] = "/dev/fb1"
+os.environ["SDL_MOUSEDEV"] = "/dev/input/touchscreen"
+os.environ["SDL_MOUSEDRV"] = "TSLIB"
+
+SCR_SIZE = 320, 240
+BUTTON_PADDING = 10
+WHITE = (255, 255, 255)
 
 BITRATE = 9600
 
@@ -18,9 +23,13 @@ DEFAULT_CONFIG = {
   }
 
 
-def load_config(filepath):
 
-    global led
+pygame.init()
+pygame.mouse.set_visible(False)
+screen = pygame.display.set_mode(SCR_SIZE)
+
+def load_config(filepath):
+    
     global url
     global zona
 
@@ -39,28 +48,7 @@ def load_config(filepath):
     config = config_data.get('config', DEFAULT_CONFIG)
 
     url = config.get('address')
-    led = config.get('led')
     zona = config.get('zona')
-
-
-def encender():
-    GPIO.output(11,True)
-    time.sleep(1)
-    GPIO.output(11,False)
-
-def mandar_zona(rfid):
-    global led
-    global url
-    global zona
-
-    if led:
-        encender()
-    consulta = url + rfid + '/' + zona
-    print consulta
-    r = requests.get(consulta)
-    print r
-    print r.json()
-
 
 
 
@@ -92,4 +80,3 @@ if __name__ == "__main__":
             #print rfid
             match = rfidPattern.sub('', last_received)
 	    print match
-            mandar_zona(match)
