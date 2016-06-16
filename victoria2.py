@@ -19,9 +19,9 @@ GREEN = (0,255,0)
 RECT_RED = [20, 20, 250, 100]
 RECT_GREEN = [20, 20, 250, 100]
 
-#pygame.init()
-#pygame.mouse.set_visible(False)
-#screen = pygame.display.set_mode(SCR_SIZE)
+pygame.init()
+pygame.mouse.set_visible(False)
+screen = pygame.display.set_mode(SCR_SIZE)
 
 
 
@@ -52,4 +52,4 @@ if __name__ == '__main__':
       lines = ''
 
 
-    #pygame.display.update()
+    pygame.display.update()
