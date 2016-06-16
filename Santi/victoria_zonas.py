@@ -5,17 +5,13 @@ import requests
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(11,GPIO.OUT)
+GPIO.setup(10,GPIO.OUT)
 
-URL = '10.1.8.170:9000/api/visitors/'
+URL = 'http://10.1.8.170:9000/api/visitors/'
 BITRATE = 9600
-<<<<<<< HEAD
-LED = True
-ZONA = 10
-=======
 LED = False
 ZONA = 'Comida'
->>>>>>> 5c52870b5027c333c2d58485b3d73a4090832bc1
+
 
 def encender():
     GPIO.output(11,True)
@@ -25,9 +21,10 @@ def encender():
 def mandar_zona(rfid,zona):
     if LED:
         encender()
-    consulta = URL + rfid +'/' zona
+    consulta = URL + rfid +'/' + zona
+    print consulta
     r = requests.get(consulta)
-    print r
+    print r.toJson()
 
 
 if __name__ == '__main__':
