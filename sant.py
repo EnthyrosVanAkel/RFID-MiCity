@@ -13,7 +13,7 @@ WHITE = (255, 255, 255)
 
 
 if __name__ == '__main__':
-    buffer = ''
+    
     ser = serial.Serial('/dev/ttyUSB0', BITRATE)
     rfidPattern = re.compile(b'[\W_]+')
 
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     except Exception, e:
         print "error open serial port: " + str(e)
         exit()
-​
+
     if ser.isOpen():
         while True:
             line = ser.readline()
