@@ -42,7 +42,7 @@ if __name__ == '__main__':
             line = ser.readline()
             rfid = line.strip()
             print rfid
-            data = {'rfid':decimal,'zona':1,'experiencia':1}
+            data = {'rfid':rfid,'zona':1,'experiencia':1}
             r = requests.get(URL,params = data)
             json = r.json()
             edad = json.get('edad')
