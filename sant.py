@@ -13,7 +13,7 @@ WHITE = (255, 255, 255)
 
 
 if __name__ == '__main__':
-    buffer = ''
+    
     ser = serial.Serial('/dev/ttyUSB0', BITRATE)
     rfidPattern = re.compile(b'[\W_]+')
 
