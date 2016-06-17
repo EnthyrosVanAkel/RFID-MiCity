@@ -100,18 +100,21 @@ if __name__ == "__main__":
 
     ser = serial.Serial('/dev/ttyUSB0', BITRATE)
     rfidPattern = re.compile(b'[\W_]+')
-    try:
-        ser.flushInput()
-        ser.flushOutput()
-    except Exception, e:
-        print "error open serial port: " + str(e)
-        exit()
 
-    if ser.isOpen():
-        while True:
-            line = ser.readline()
-            last_received = line.strip()
-            match = rfidPattern.sub('', last_received)
-            espera(match)
-            
-            pygame.display.update()
+
+    
+try:
+    ser.flushInput()
+    ser.flushOutput()
+except Exception, e:
+    print "error open serial port: " + str(e)
+    exit()
+
+if ser.isOpen():
+    while True:
+        line = ser.readline()
+        last_received = line.strip()
+        match = rfidPattern.sub('', last_received)
+        espera(match)
+
+        pygame.display.update()
