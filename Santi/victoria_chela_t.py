@@ -36,7 +36,7 @@ if __name__ == '__main__':
       if edad:
         if not chela:
           print 'Permitido'
-	  c = requests.post(URL + 'free/' + match + '/true')
+          c = requests.post(URL + 'free/' + match + '/true')
         else:
           print 'Entregada'
       else:
