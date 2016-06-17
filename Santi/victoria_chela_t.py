@@ -30,3 +30,13 @@ if __name__ == '__main__':
       r = requests.put(cadena)
       json = r.json()
       print json
+      edad = json.get('edad')
+      chela = json.get('chelaFree')
+
+      if chela:
+        print 'Permitido'
+
+      else:
+        print 'No Permitido'
+
+
