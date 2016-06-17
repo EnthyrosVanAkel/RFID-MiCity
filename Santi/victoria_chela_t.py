@@ -2,6 +2,7 @@ import re, sys, signal, os, time, datetime
 import serial
 ### Instalar Requets
 import requests
+import json
 
 
 BITRATE = 9600
@@ -25,6 +26,7 @@ if __name__ == '__main__':
       last_received = line.strip()
       match = rfidPattern.sub('', last_received)
       print match
-      #data = {'rfid':match,'zona':1,'experiencia':1}
-      #r = requests.get(URL,params = data)
-      #json = r.json()
+      cadena = URL + match
+      r = requests.put(cadena)
+      json = r.json()
+      print json
