@@ -34,8 +34,10 @@ if __name__ == '__main__':
       chela = json.get('chelaFree')
 
       if edad:
-        print 'Permitido'
-
+        if !chela:
+          print 'Permitido'
+        else:
+          print 'Entregada'
       else:
         print 'No Permitido'
 
