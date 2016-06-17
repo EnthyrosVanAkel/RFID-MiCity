@@ -24,12 +24,13 @@ pygame.mouse.set_visible(False)
 screen = pygame.display.set_mode(SCR_SIZE)
 
 
-
-
-if __name__ == '__main__':
+def main(argv):
   buffer = ''
   ser = serial.Serial('/dev/ttyUSB0', BITRATE, timeout=1)
   rfidPattern = re.compile(b'[\W_]+')
+
+if __name__ == '__main__':
+  main(sys.argv)
   while True:
     buffer = buffer + ser.read(ser.inWaiting())
     if '\n' in buffer:
