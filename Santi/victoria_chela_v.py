@@ -59,7 +59,7 @@ if __name__ == '__main__':
           c = requests.post(URL + 'free/' + match + '/true')
         else:
           print 'Entregada'
-          pygame.draw.rect(screen,YELLOW,RECT_YELLOW)
+          pygame.draw.rect(screen,BLUE,RECT_BlUE)
       else:
         print 'No Permitido'
         pygame.draw.rect(screen,RED,RECT_RED)
