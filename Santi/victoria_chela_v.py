@@ -20,7 +20,7 @@ GREEN = (0,255,0)
 BLUE = (0,0,255)
 RECT_RED = [0, 0, 320, 240]
 RECT_GREEN = [0, 0, 320, 240]
-RECT_BLUE = [0 0, 320, 240]
+RECT_BLUE = [0, 0, 320, 240]
 
 
 pygame.init()
@@ -59,7 +59,7 @@ if __name__ == '__main__':
           c = requests.post(URL + 'free/' + match + '/true')
         else:
           print 'Entregada'
-          pygame.draw.rect(screen,BLUE,RECT_BlUE)
+          pygame.draw.rect(screen,BLUE,RECT_BLUE)
       else:
         print 'No Permitido'
         pygame.draw.rect(screen,RED,RECT_RED)
