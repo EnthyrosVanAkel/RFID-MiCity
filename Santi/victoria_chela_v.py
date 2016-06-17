@@ -63,8 +63,9 @@ if __name__ == '__main__':
         pygame.draw.rect(screen,RED,RECT)
 
 
-      pygame.draw.rect(screen,BLACK,RECT)
 
+      time.sleep(2)
+      pygame.draw.rect(screen,BLACK,RECT)
       pygame.display.update()
 
 
