@@ -8,7 +8,7 @@ import json
 BITRATE = 9600
 
 
-URL = ' http://10.1.8.170:9000/api/visitors/edad/'
+URL = 'http://10.1.8.170:9000/api/visitors/edad/'
 
 if __name__ == '__main__':
   ser = serial.Serial('/dev/ttyUSB0', BITRATE)
@@ -33,7 +33,7 @@ if __name__ == '__main__':
       edad = json.get('edad')
       chela = json.get('chelaFree')
 
-      if chela:
+      if edad:
         print 'Permitido'
 
       else:
