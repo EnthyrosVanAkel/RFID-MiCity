@@ -18,9 +18,7 @@ BLACK = (0,0,0)
 RED = (255,0,0)
 GREEN = (0,255,0)
 BLUE = (0,0,255)
-RECT_RED = [0, 0, 320, 240]
-RECT_GREEN = [0, 0, 320, 240]
-RECT_BLUE = [0, 0, 320, 240]
+RECT = [0, 0, 320, 240]
 
 
 pygame.init()
@@ -55,15 +53,17 @@ if __name__ == '__main__':
       if edad:
         if not chela:
           print 'Permitido'
-          pygame.draw.rect(screen,GREEN,RECT_GREEN)
+          pygame.draw.rect(screen,GREEN,RECT)
           c = requests.post(URL + 'free/' + match + '/true')
         else:
           print 'Entregada'
-          pygame.draw.rect(screen,BLUE,RECT_BLUE)
+          pygame.draw.rect(screen,BLUE,RECT)
       else:
         print 'No Permitido'
-        pygame.draw.rect(screen,RED,RECT_RED)
+        pygame.draw.rect(screen,RED,RECT)
 
+
+      pygame.draw.rect(screen,BLACK,RECT)
 
       pygame.display.update()
 
