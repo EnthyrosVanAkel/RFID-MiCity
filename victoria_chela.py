@@ -1,4 +1,4 @@
-import re, sys, signal, os, time, datetime
+import re, sys, signal, os
 import serial
 ### Instalar Requets
 import requests
@@ -83,6 +83,17 @@ def main(argv):
         filepath = argv[1]
     load_config(filepath)
 
+    ser = serial.Serial('/dev/ttyUSB0', BITRATE)
+    rfidPattern = re.compile(b'[\W_]+')
+
+    try:
+        ser.flushInput()
+        ser.flushOutput()
+    except Exception, e:
+        print "error open serial port: " + str(e)
+        exit()
+
+
 def espera(text):
     global color
     global font_size
@@ -97,16 +108,6 @@ def espera(text):
 
 if __name__ == "__main__":
     main(sys.argv)
-
-    ser = serial.Serial('/dev/ttyUSB0', BITRATE)
-    rfidPattern = re.compile(b'[\W_]+')
-
-    try:
-        ser.flushInput()
-        ser.flushOutput()
-    except Exception, e:
-        print "error open serial port: " + str(e)
-        exit()
 
 while 1:
     line = ser.readline()
