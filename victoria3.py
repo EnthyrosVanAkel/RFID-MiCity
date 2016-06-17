@@ -51,8 +51,5 @@ if __name__ == '__main__':
         else:
           pygame.draw.rect(screen,GREEN,RECT_GREEN)
           print 'Permitido'
-
-
-        screen.fill(BLACK)
-
+          
         pygame.display.update()
