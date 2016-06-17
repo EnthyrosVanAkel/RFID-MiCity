@@ -17,11 +17,34 @@ BITRATE = 9600
 
 
 DEFAULT_CONFIG = {
-    "address": "http://10.1.8.170:9000/api/visitors/",
-    "led": False,
-    "zona": "Zona1"
+    "address": "http://10.1.8.170:9000/api/visitors/"
   }
 
+
+MENOR = {
+    "label": "Menor",
+    "font_size": 45,
+    "position": [20, 20],
+    "size": [280, 90],
+    "color": [255,0,0]
+  }
+
+ENTREGADA = {
+    "label": "Entregada",
+    "font_size": 45,
+    "position": [20, 20],
+    "size": [280, 90],
+    "color": [0,0,255]
+  }
+
+
+MAYOR = {
+    "label": "Mayor",
+    "font_size": 45,
+    "position": [20, 20],
+    "size": [280, 90],
+    "color": [0, 255, 0]
+  }
 
 
 pygame.init()
@@ -31,8 +54,8 @@ screen = pygame.display.set_mode(SCR_SIZE)
 def load_config(filepath):
 
     global url
-    global zona
-
+    global color
+    global font_size
 
     print 'Loading config...'
     try:
@@ -46,9 +69,11 @@ def load_config(filepath):
         print '[FATAL] Error loading config file: ' + str(e)
 
     config = config_data.get('config', DEFAULT_CONFIG)
-
     url = config.get('address')
-    zona = config.get('zona')
+
+    menor = config_data.get('menor',MENOR)
+    color = menor.get('color')
+    font_size = menor.get('font_size')
 
 
 
@@ -56,9 +81,18 @@ def main(argv):
     filepath = 'config.json'
     if len(argv) > 1:
         filepath = argv[1]
-
-
     load_config(filepath)
+
+def espera(text):
+    global color
+    global font_size
+
+    font = pygame.font.Font(None, font_size)
+    label = font.render(str(text), 1, WHITE)
+    rect = (0, 0, 300, 100)
+    pygame.draw.rect(screen,color,rect)
+    screen.blit(label, (30, 30))
+
 
 
 if __name__ == "__main__":
@@ -77,9 +111,7 @@ if __name__ == "__main__":
         while True:
             line = ser.readline()
             last_received = line.strip()
-            #print rfid
             match = rfidPattern.sub('', last_received)
-	    print match
-
-
-        pygame.display.update()
+            espera(match)
+            
+            pygame.display.update()
