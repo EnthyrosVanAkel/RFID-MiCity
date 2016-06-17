@@ -17,10 +17,10 @@ WHITE = (255, 255, 255)
 BLACK = (0,0,0)
 RED = (255,0,0)
 GREEN = (0,255,0)
-YELLOW = (0,0,255)
-RECT_RED = [20, 0, 250, 80]
-RECT_GREEN = [20, 80, 250, 80]
-RECT_YELLOW = [20, 160, 250, 80]
+BLUE = (0,0,255)
+RECT_RED = [0, 0, 320, 240]
+RECT_GREEN = [0, 0, 320, 240]
+RECT_BLUE = [0 0, 320, 240]
 
 
 pygame.init()
