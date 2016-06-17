@@ -10,7 +10,7 @@ os.environ["SDL_MOUSEDEV"] = "/dev/input/touchscreen"
 os.environ["SDL_MOUSEDRV"] = "TSLIB"
 
 BITRATE = 9600
-URL = 'http://papalote.cocoplan.mx/v0/visitante'
+URL = 'http://10.1.8.170:9000/api/visitors/edad/'
 SCR_SIZE = 320, 240
 WHITE = (255, 255, 255)
 BLACK = (0,0,0)
