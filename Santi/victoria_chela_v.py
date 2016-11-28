@@ -25,6 +25,7 @@ pygame.init()
 pygame.mouse.set_visible(False)
 screen = pygame.display.set_mode(SCR_SIZE)
 
+#URL = 'http://10.0.1.100:8080/api/visitors/'
 URL = 'http://10.1.8.170:9000/api/visitors/'
 
 if __name__ == '__main__':
@@ -45,13 +46,13 @@ if __name__ == '__main__':
       match = rfidPattern.sub('', last_received)
       print match
       cadena = URL + 'edad/' +match
-      r = requests.put(cadena)
+      r = requests.get(cadena)
       json = r.json()
       print json
       edad = json.get('edad')
       chela = json.get('chelaFree')
 
-      if edad:
+      if edad == 'True':
         if not chela:
           print 'Permitido'
           pygame.draw.rect(screen,GREEN,RECT)
@@ -74,7 +75,3 @@ if __name__ == '__main__':
       pygame.display.update()
       #time.sleep(2)
       #pygame.draw.rect(screen,BLACK,RECT)
-
-
-
-
